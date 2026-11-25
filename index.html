@@ -1,0 +1,88 @@
+html
+head
+meta charset="utf-8"
+meta name="viewport" content="width=device-width,initial-scale=1.0"
+titleSTARK Mobile/title
+style
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;background:#0a0e1a;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;overflow:hidden;}
+.screen{display:flex;flex-direction:column;height:100%;position:relative;}
+.content{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+.orb-wrap{position:relative;width:220px;height:220px;}
+.orb{width:140px;height:140px;border-radius:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 30% 30%,#00e5ff,#0077ff,#002266);box-shadow:0 0 40px #00e5ff88,0 0 80px #0077ff44;animation:pulse 2.5s ease-in-out infinite alternate;}
+@keyframes pulse{0%{transform:translate(-50%,-50%) scale(1);box-shadow:0 0 40px #00e5ff88,0 0 80px #0077ff44;}50%{transform:translate(-50%,-50%) scale(1.15);box-shadow:0 0 60px #00e5ffaa,0 0 100px #0077ff66;}100%{transform:translate(-50%,-50%) scale(1.05);box-shadow:0 0 50px #00e5ff99,0 0 90px #0077ff55;}}
+.waveform{position:absolute;bottom:70px;left:50%;transform:translateX(-50%);display:flex;gap:4px;align-items:center;height:60px;}
+.bar{width:6px;border-radius:3px;background:linear-gradient(to top,#00e5ff,#0077ff);animation:wave 1.2s ease-in-out infinite alternate;}
+.bar:nth-child(1){height:20px;animation-delay:0s;}
+.bar:nth-child(2){height:35px;animation-delay:.15s;}
+.bar:nth-child(3){height:50px;animation-delay:.3s;}
+.bar:nth-child(4){height:60px;animation-delay:.45s;}
+.bar:nth-child(5){height:45px;animation-delay:.6s;}
+.bar:nth-child(6){height:30px;animation-delay:.75s;}
+.bar:nth-child(7){height:18px;animation-delay:.9s;}
+@keyframes wave{0%{transform:scaleY(.5);}100%{transform:scaleY(1.4);}}
+.nav{height:70px;display:flex;justify-content:space-around;align-items:center;background:linear-gradient(to top,#060a14,#0a0e1aee);border-top:1px solid #1a2040;flex-shrink:0;}
+.nav-btn{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;color:#8892b0;cursor:pointer;padding:8px 16px;border-radius:8px;transition:color .2s,background .2s;}
+.nav-btn.active,.nav-btn:hover{color:#00e5ff;background:#00e5ff11;}
+.nav-btn svg{width:24px;height:24px;fill:currentColor;}
+.panel{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:80px 24px 100px;background:#0a0e1a;z-index:5;}
+.panel h2{color:#00e5ff;font-size:1.5rem;margin-bottom:12px;}
+.panel p{color:#8892b0;font-size:.9rem;text-align:center;line-height:1.6;max-width:320px;}
+.panel.active{display:flex;}
+/style
+/head
+body
+div class="screen"
+  div class="content"
+    div class="orb-wrap"
+      div class="orb"
+    div class="waveform"
+      div class="bar"
+      div class="bar"
+      div class="bar"
+      div class="bar"
+      div class="bar"
+      div class="bar"
+      div class="bar"
+    /div
+  /div
+  nav class="nav"
+    button class="nav-btn active" data-tab="voix" aria-label="Voix"
+      svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:currentColor" path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/path
+      spanVoix/span
+    /button
+    button class="nav-btn" data-tab="chat" aria-label="Chat"
+      svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:currentColor" path d="M20 2H4a2 2 0 00-2 2v12a2 2 0 002 2h4l4 4 4-4h4a2 2 0 002-2V4a2 2 0 00-2-2z"/path
+      spanChat/span
+    /button
+    button class="nav-btn" data-tab="memoire" aria-label="Mémoire"
+      svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:currentColor" path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM8 14H6v-2h2zm0-4H6V8h2zm4 4h-2v-2h2zm0-4h-2V8h2zm4 4h-2v-2h2zm0-4h-2V8h2z"/path
+      spanMémoire/span
+    /button
+    button class="nav-btn" data-tab="systeme" aria-label="Système"
+ svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:currentColor" path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.74 8.87a.48.48 0 00.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1115.6 12 3.6 3.6 0 0112 15.6z"/path
+      spanSystème/span
+    /button
+  /nav
+  div class="panel active" id="voix"
+    h2Voix/h2
+    pDémo – reconnaissance vocale activée. Parlez pour interagir avec le système./p
+  /div
+  div class="panel" id="chat"
+    h2Chat/h2
+    pDémo – interface de messagerie. Aucune donnée réelle envoyée./p
+  /div
+  div class="panel" id="memoire"
+    h2Mémoire/h2
+    pDémo – historique des sessions. Contexte sauvegardé localement./p
+  /div
+  div class="panel" id="systeme"
+    h2Système/h2
+    pDémo – paramètres Stark. Version 0.1 – démo./p
+  /div
+/body
+script
+document.querySelectorAll('.nav-btn').forEach(b=b.addEventListener('click',function(){document.querySelectorAll('.nav-btn').forEach(x=x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.panel').forEach(p=p.classList.remove('active'));var tab=document.getElementById(b.dataset.tab);if(tab)tab.classList.add('active');}));
+/script
+/body
+/html
